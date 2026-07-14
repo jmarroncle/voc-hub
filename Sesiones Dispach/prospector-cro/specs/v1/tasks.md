@@ -26,9 +26,9 @@ Orden de ejecución. Cada tarea se marca `[x]` cuando está hecha y verificada (
 - [x] C5. Test: `test_audit_heuristics.py` con HTML de ejemplo guardado localmente (sin red) para C1, C3 y C4. (8/8 tests verdes, 17/17 en total)
 
 ## D. Score y propuesta (pasos 8-9 del spec)
-- [ ] D1. `scoring.py`: `calcular_score(empresa_json)` — reglas documentadas (spec sección 8), devuelve `score`, `categoria`, `razones`.
-- [ ] D2. Test: `test_scoring.py` con 3-4 casos de ejemplo (sitio rápido y prolijo → score bajo; sitio lento y sin CTA → score alto), confirmando que las razones coinciden con las reglas.
-- [ ] D3. `proposal.py`: `armar_propuesta(empresa_json)` — diagnóstico (hallazgos concretos desde `razones`), servicio sugerido, llamado a la acción.
+- [x] D1. `scoring.py`: `calcular_score(empresa_json)` — reglas documentadas (spec sección 8), devuelve `score`, `categoria`, `razones`.
+- [x] D2. Test: `test_scoring.py` con casos de ejemplo (sitio prolijo → score bajo; sitio lento y sin CTA → score alto; DR no disponible; tope de puntos por problemas técnicos), confirmando que las razones coinciden con las reglas.
+- [x] D3. `proposal.py`: `armar_propuesta(empresa_json)` + `armar_cuerpo_email(...)` — diagnóstico (hallazgos concretos desde `razones`, sin inventar), servicio sugerido, llamado a la acción. (6/6 tests verdes, 23/23 en total)
 
 ## E. Orquestación y estado (resumibilidad)
 - [ ] E1. `pipeline.py`: `nueva_corrida(mercado, pais, tamaño)` — crea `data/<lote-id>/` y `state.json`.
