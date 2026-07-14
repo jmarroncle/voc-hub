@@ -19,11 +19,11 @@ Orden de ejecución. Cada tarea se marca `[x]` cuando está hecha y verificada (
 - [x] B5. Test: con datos de ejemplo fijos (sin red), confirmar que la tabla combinada marca correctamente cada fuente. (5/5 tests verdes)
 
 ## C. Auditoría por empresa (pasos 5-7 del spec)
-- [ ] C1. `audit.py`: `detectar_tecnologia(url)` combinando `webtech` + heurísticas propias (CRO-específicas: chat en vivo, pixel de ads, tipo de checkout).
-- [ ] C2. `audit.py`: `capturar_pantallas(url)` con Playwright — home + checkout/landing, guarda en `data/<lote-id>/capturas/<dominio>/`.
-- [ ] C3. `audit.py`: `detectar_senales_ux(html)` — formulario largo, ausencia de CTA, pasos de checkout.
-- [ ] C4. `audit.py`: `armar_json_empresa(datos_apollo, datos_ahrefs, datos_scraping)` — combina todo contra el esquema de `schema.py`, marcando `null`/"no disponible" donde falte un dato (nunca inventa).
-- [ ] C5. Test: `test_audit_heuristics.py` con HTML de ejemplo guardado localmente (sin red) para C1 y C3.
+- [x] C1. `audit.py`: heurísticas propias de tecnología (`detectar_tecnologia_heuristica`, `tiene_chat_vivo`). (Nota: la combinación con `webtech` real se ejercita en la corrida real del Grupo F, porque necesita red.)
+- [x] C2. `audit.py`: `capturar_pantallas(url, url_checkout_o_landing, carpeta_destino)` con Playwright (Chromium preinstalado) — home + checkout/landing. Se ejercita en el Grupo F (necesita red/navegador real).
+- [x] C3. `audit.py`: `detectar_senales_ux(html)` — formulario largo, ausencia de CTA, pasos de checkout.
+- [x] C4. `audit.py`: `armar_json_empresa(...)` — combina todo contra el esquema de `schema.py`, marcando `null`/"no disponible" donde falte un dato (nunca inventa).
+- [x] C5. Test: `test_audit_heuristics.py` con HTML de ejemplo guardado localmente (sin red) para C1, C3 y C4. (8/8 tests verdes, 17/17 en total)
 
 ## D. Score y propuesta (pasos 8-9 del spec)
 - [ ] D1. `scoring.py`: `calcular_score(empresa_json)` — reglas documentadas (spec sección 8), devuelve `score`, `categoria`, `razones`.
