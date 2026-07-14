@@ -6,10 +6,10 @@ Basado en: `spec.md` + `plan.md` de esta misma carpeta.
 Orden de ejecución. Cada tarea se marca `[x]` cuando está hecha y verificada (no solo escrita).
 
 ## A. Base del proyecto
-- [ ] A1. Crear estructura de carpetas (`prospector/`, `data/`, `tests/`) y `requirements.txt` (pandas, requests, beautifulsoup4, playwright, webtech, jsonschema, pytest).
-- [ ] A2. Agregar `data/` al `.gitignore` del proyecto (son datos de terceros, no código).
-- [ ] A3. `schema.py`: definir el esquema del JSON de empresa (del spec, sección 4) y `validar_empresa(json)` con `jsonschema`.
-- [ ] A4. Test: `test_schema.py` — un JSON válido pasa, uno con un campo inventado/mal tipado falla.
+- [x] A1. Crear estructura de carpetas (`prospector/`, `data/`, `tests/`) y `requirements.txt` (pandas, requests, beautifulsoup4, playwright, webtech, jsonschema, pytest).
+- [x] A2. Agregar `data/` al `.gitignore` del proyecto (son datos de terceros, no código).
+- [x] A3. `schema.py`: definir el esquema del JSON de empresa (del spec, sección 4) y `validar_empresa(json)` con `jsonschema`.
+- [x] A4. Test: `test_schema.py` — un JSON válido pasa, uno con un campo inventado/mal tipado falla. (4/4 tests verdes)
 
 ## B. Descubrimiento (paso 4 del spec)
 - [ ] B1. `discovery.py`: `marcar_fuente_apollo(df)` — adapta el resultado de Apollo a las columnas del esquema (nombre, dominio, país, industria, empleados, `fuente_descubrimiento="apollo"`).
