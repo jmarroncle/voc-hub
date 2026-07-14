@@ -55,7 +55,7 @@ EMPRESA_SCHEMA = {
                     "additionalProperties": False,
                     "properties": {
                         "tecnologia_detectada": {"type": "array", "items": {"type": "string"}},
-                        "tiene_chat_vivo": {"type": "boolean"},
+                        "tiene_chat_vivo": {"type": ["boolean", "null"]},
                         "capturas": {
                             "type": "object",
                             "required": ["home", "checkout_o_landing"],
@@ -70,8 +70,8 @@ EMPRESA_SCHEMA = {
                             "required": ["formulario_largo", "cta_visible", "pasos_checkout"],
                             "additionalProperties": False,
                             "properties": {
-                                "formulario_largo": {"type": "boolean"},
-                                "cta_visible": {"type": "boolean"},
+                                "formulario_largo": {"type": ["boolean", "null"]},
+                                "cta_visible": {"type": ["boolean", "null"]},
                                 "pasos_checkout": {"type": ["number", "null"]},
                             },
                         },

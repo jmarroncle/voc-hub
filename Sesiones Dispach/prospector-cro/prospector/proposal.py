@@ -22,7 +22,10 @@ def armar_propuesta(empresa_json: dict) -> dict:
     categoria = oportunidad["categoria"]
     razones = oportunidad["razones"]
 
-    diagnostico = [_redactar_para_cliente(r) for r in razones if not r.startswith("Domain Rating no disponible")]
+    diagnostico = [
+        _redactar_para_cliente(r) for r in razones
+        if "no disponible" not in r.lower() and not r.startswith("No se pudo")
+    ]
 
     return {
         "diagnostico": diagnostico,

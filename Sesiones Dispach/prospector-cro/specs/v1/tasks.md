@@ -35,9 +35,15 @@ Orden de ejecución. Cada tarea se marca `[x]` cuando está hecha y verificada (
 - [x] E2. `pipeline.py`: `guardar_estado(lote_id, dominio, paso)` / `listar_pendientes(lote_id)` — para poder retomar un lote cortado a la mitad. (5/5 tests verdes, 28/28 en total, incluye test de "reinicio" simulado)
 
 ## F. Primera corrida real (validación end-to-end)
-- [ ] F1. Corro yo mismo, en la sesión, un lote de prueba chico (1 mercado + país, 3-5 empresas) llamando a Apollo/Ahrefs/Gmail reales, para validar que el pipeline completo funciona de punta a punta.
-- [ ] F2. Reviso con vos la tabla, los JSON generados y un borrador de propuesta de ejemplo, antes de dar la v1 por terminada.
+- [x] F1. Corrida real con ecommerce/Argentina/11-50: Apollo devolvió 3 empresas reales (1 crédito gastado), Ahrefs Domain Rating real (gratis) para las 3. **Hallazgos importantes** (ver abajo). JSON de cada empresa generado y validado contra el esquema, guardado en `data/20260714-212421-abb2af/empresas/`.
+- [ ] F2. Reviso con vos la tabla, los JSON generados y un borrador de propuesta de ejemplo, antes de dar la v1 por terminada. **Pausado**: las propuestas quedaron muy débiles (una con 0 hallazgos) por las limitaciones de abajo — a la espera de tu decisión antes de crear los borradores en Gmail.
 - [ ] F3. Confirmamos juntos que se cumplen los criterios de aceptación del spec (sección 5), uno por uno.
+
+### Hallazgos reales de esta corrida (no estaban previstos en el plan)
+1. **Ahrefs, plan insuficiente**: `site-explorer-metrics` (tráfico) y `site-audit-issues` (problemas técnicos) devuelven "Insufficient plan" con la cuenta conectada. Solo funciona el Domain Rating gratuito (`public-domain-rating-free`).
+2. **Scraping propio bloqueado por la red del entorno**: este entorno cloud (acceso "Trusted") solo permite un listado fijo de dominios (registries, APIs). Los sitios de las empresas devuelven 403 del proxy — no es un bug del código (que falla "cerrado" correctamente), es la política de red del entorno.
+3. **Bug real encontrado y corregido**: el esquema no permitía `null` en `tiene_chat_vivo`/`formulario_largo`/`cta_visible`, y el scoring trataba "no disponible" como `False` (penalizaba sin datos). Corregido en `schema.py` y `scoring.py`, con test de regresión agregado.
+4. **Consecuencia de negocio**: sin tráfico/problemas técnicos de Ahrefs ni señales de scraping, las propuestas generadas son débiles (EcomExperts quedó con 0 hallazgos). No cumplen todavía el objetivo de "investigación interesante" del pedido original.
 
 ## G. Documentación
 - [ ] G1. `README.md` del proyecto: cómo correr una búsqueda, cómo retomar un lote, dónde quedan los JSON/capturas, qué significa cada campo del esquema.

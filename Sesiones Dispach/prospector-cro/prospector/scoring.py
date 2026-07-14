@@ -48,13 +48,19 @@ def calcular_score(empresa_json: dict) -> dict:
         puntos += puntos_problemas
         razones.append(f"Se detectaron {len(problemas)} problema(s) técnico(s) en Ahrefs (ej: \"{problemas[0]}\").")
 
-    if not senales_ux.get("cta_visible", True):
+    cta_visible = senales_ux.get("cta_visible")
+    if cta_visible is False:
         puntos += PUNTOS_SIN_CTA
         razones.append("No se detectó un llamado a la acción (CTA) claro en el sitio.")
+    elif cta_visible is None:
+        razones.append("No se pudo revisar el CTA del sitio (scraping no disponible).")
 
-    if senales_ux.get("formulario_largo"):
+    formulario_largo = senales_ux.get("formulario_largo")
+    if formulario_largo is True:
         puntos += PUNTOS_FORMULARIO_LARGO
         razones.append("El formulario principal tiene más de 6 campos, lo que genera fricción.")
+    elif formulario_largo is None:
+        razones.append("No se pudo revisar el formulario del sitio (scraping no disponible).")
 
     pasos_checkout = senales_ux.get("pasos_checkout")
     if pasos_checkout is not None and pasos_checkout > PASOS_CHECKOUT_RECOMENDADOS:
@@ -63,9 +69,12 @@ def calcular_score(empresa_json: dict) -> dict:
             f"El checkout tiene {pasos_checkout} pasos, más de los {PASOS_CHECKOUT_RECOMENDADOS} recomendados."
         )
 
-    if not scraping.get("tiene_chat_vivo", True):
+    tiene_chat = scraping.get("tiene_chat_vivo")
+    if tiene_chat is False:
         puntos += PUNTOS_SIN_CHAT
         razones.append("El sitio no tiene chat en vivo, una herramienta simple de conversión.")
+    elif tiene_chat is None:
+        razones.append("No se pudo revisar si el sitio tiene chat en vivo (scraping no disponible).")
 
     score = min(puntos, 100)
     if score >= UMBRAL_ALTA:

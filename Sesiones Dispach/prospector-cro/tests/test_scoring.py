@@ -74,6 +74,22 @@ def test_problemas_tecnicos_tienen_tope_de_puntos():
     assert score_muchos - score_pocos <= 20 - (2 * 5)
 
 
+def test_datos_no_disponibles_por_scraping_bloqueado_no_penalizan_a_la_empresa():
+    """Si no se pudo scrapear (ej. el entorno bloquea la salida de red), cta_visible/
+    tiene_chat_vivo/formulario_largo llegan en None. None no es lo mismo que False:
+    no hay que sumar puntos como si hubiéramos confirmado el problema."""
+    empresa = _empresa(
+        ahrefs={"domain_rating": 50},
+        senales_ux={"cta_visible": None, "formulario_largo": None},
+        scraping={"tiene_chat_vivo": None},
+    )
+    resultado = calcular_score(empresa)
+    assert resultado["categoria"] == "baja"
+    assert not any("no tiene chat en vivo" in r for r in resultado["razones"])
+    assert not any("No se detectó un llamado a la acción" in r for r in resultado["razones"])
+    assert any("no disponible" in r.lower() for r in resultado["razones"])
+
+
 def test_armar_propuesta_usa_las_razones_del_score_sin_inventar_hallazgos():
     empresa = _empresa(
         ahrefs={"domain_rating": 12, "problemas_tecnicos": ["carga lenta en mobile"]},
