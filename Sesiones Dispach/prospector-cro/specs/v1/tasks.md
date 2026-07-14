@@ -12,11 +12,11 @@ Orden de ejecución. Cada tarea se marca `[x]` cuando está hecha y verificada (
 - [x] A4. Test: `test_schema.py` — un JSON válido pasa, uno con un campo inventado/mal tipado falla. (4/4 tests verdes)
 
 ## B. Descubrimiento (paso 4 del spec)
-- [ ] B1. `discovery.py`: `marcar_fuente_apollo(df)` — adapta el resultado de Apollo a las columnas del esquema (nombre, dominio, país, industria, empleados, `fuente_descubrimiento="apollo"`).
-- [ ] B2. `discovery.py`: `fallback_busqueda_web(mercado, pais, cantidad_faltante)` — scraping de resultados de búsqueda, respetando `robots.txt` y rate limit (plan, sección 4), marca `fuente_descubrimiento="fallback_busqueda_web"`.
-- [ ] B3. `discovery.py`: `fallback_directorio_publico(mercado, pais, cantidad_faltante)` — ídem contra un directorio público, marca `fuente_descubrimiento="fallback_directorio_publico"`.
-- [ ] B4. `discovery.py`: `combinar_resultados(df_apollo, fallbacks...)` — arma la tabla final que te muestro para elegir en el paso 5.
-- [ ] B5. Test: con datos de ejemplo fijos (sin red), confirmar que la tabla combinada marca correctamente cada fuente.
+- [x] B1. `discovery.py`: `marcar_fuente_apollo(df)` — adapta el resultado de Apollo a las columnas del esquema (nombre, dominio, país, industria, empleados, `fuente_descubrimiento="apollo"`).
+- [x] B2. `discovery.py`: `fallback_busqueda_web(mercado, pais, cantidad_faltante)` — scraping de resultados de búsqueda, respetando `robots.txt` y rate limit (plan, sección 4), marca `fuente_descubrimiento="fallback_busqueda_web"`.
+- [x] B3. `discovery.py`: `fallback_directorio_publico(mercado, pais, cantidad_faltante)` — ídem contra un directorio público, marca `fuente_descubrimiento="fallback_directorio_publico"`. (Nota: `DIRECTORIOS_POR_PAIS` arranca vacío; sin entrada configurada, devuelve 0 resultados en vez de inventar una fuente — hay que cargar directorios reales cuando se use.)
+- [x] B4. `discovery.py`: `combinar_resultados(df_apollo, fallbacks...)` — arma la tabla final que te muestro para elegir en el paso 5.
+- [x] B5. Test: con datos de ejemplo fijos (sin red), confirmar que la tabla combinada marca correctamente cada fuente. (5/5 tests verdes)
 
 ## C. Auditoría por empresa (pasos 5-7 del spec)
 - [ ] C1. `audit.py`: `detectar_tecnologia(url)` combinando `webtech` + heurísticas propias (CRO-específicas: chat en vivo, pixel de ads, tipo de checkout).
