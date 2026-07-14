@@ -31,8 +31,8 @@ Orden de ejecución. Cada tarea se marca `[x]` cuando está hecha y verificada (
 - [x] D3. `proposal.py`: `armar_propuesta(empresa_json)` + `armar_cuerpo_email(...)` — diagnóstico (hallazgos concretos desde `razones`, sin inventar), servicio sugerido, llamado a la acción. (6/6 tests verdes, 23/23 en total)
 
 ## E. Orquestación y estado (resumibilidad)
-- [ ] E1. `pipeline.py`: `nueva_corrida(mercado, pais, tamaño)` — crea `data/<lote-id>/` y `state.json`.
-- [ ] E2. `pipeline.py`: `guardar_estado(lote_id, dominio, paso)` / `listar_pendientes(lote_id)` — para poder retomar un lote cortado a la mitad.
+- [x] E1. `pipeline.py`: `nueva_corrida(mercado, pais, tamaño)` — crea `data/<lote-id>/` y `state.json`.
+- [x] E2. `pipeline.py`: `guardar_estado(lote_id, dominio, paso)` / `listar_pendientes(lote_id)` — para poder retomar un lote cortado a la mitad. (5/5 tests verdes, 28/28 en total, incluye test de "reinicio" simulado)
 
 ## F. Primera corrida real (validación end-to-end)
 - [ ] F1. Corro yo mismo, en la sesión, un lote de prueba chico (1 mercado + país, 3-5 empresas) llamando a Apollo/Ahrefs/Gmail reales, para validar que el pipeline completo funciona de punta a punta.
