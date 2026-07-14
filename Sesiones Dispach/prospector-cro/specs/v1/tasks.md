@@ -46,7 +46,7 @@ Orden de ejecución. Cada tarea se marca `[x]` cuando está hecha y verificada (
 4. **Consecuencia de negocio**: sin tráfico/problemas técnicos de Ahrefs ni señales de scraping, las propuestas generadas son débiles (EcomExperts quedó con 0 hallazgos). No cumplen todavía el objetivo de "investigación interesante" del pedido original.
 
 ## G. Documentación
-- [ ] G1. `README.md` del proyecto: cómo correr una búsqueda, cómo retomar un lote, dónde quedan los JSON/capturas, qué significa cada campo del esquema.
+- [x] G1. `README.md` del proyecto: cómo correr una búsqueda, cómo retomar un lote, dónde quedan los JSON/capturas, qué significa cada campo del esquema, y el estado real (incluidos los bloqueos del Grupo F).
 
 ---
 **Nota:** la interfaz visual y la Rutina de notificación push (`BACKLOG.md`) no están acá — son proyectos/tareas separados, para después de validar esta v1.
