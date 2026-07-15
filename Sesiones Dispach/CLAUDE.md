@@ -56,7 +56,15 @@ Cada proyecto tiene su propia carpeta `specs/`. Cada tarea/feature dentro de un 
 
 ---
 
-## 4. Glosario rápido (para ir aprendiendo)
+## 4. Glosario personal, que se arma solo
+
+Además del glosario rápido de abajo (fijo, son los términos base de SDD),
+existe `Sesiones Dispach/GLOSARIO.md`: un apunte que crece solo. La skill
+`glosario` (en `.claude/skills/glosario/`) agrega ahí cualquier término nuevo
+de Git, GitHub, SDD o Claude Code que se explique en una sesión, sin que haga
+falta pedirlo — y evita duplicados. Se puede consultar o forzar con `/glosario`.
+
+## 4b. Glosario rápido (para ir aprendiendo)
 
 - **Spec (especificación):** describe el problema y el resultado esperado, sin hablar todavía de tecnología. Incluye "criterios de aceptación": frases tipo "esto está bien hecho si X".
 - **Plan:** traduce el spec a decisiones técnicas (qué librería, qué estructura, qué se toca).
