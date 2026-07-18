@@ -91,3 +91,21 @@ Un archivo de instrucciones (`SKILL.md`) que le enseña a Claude un procedimient
 específico. Se puede invocar a mano con `/nombre-skill`, o Claude la usa sola
 cuando detecta que aplica.
 _Agregado: 2026-07-15_
+
+## Agente (subagent)
+Una sesión aparte que Claude delega para hacer una tarea puntual (investigar,
+buscar código, planificar) en su propio contexto, y que devuelve un resultado
+a la conversación principal. A diferencia de una skill (un procedimiento que
+Claude sigue él mismo), un agente corre por separado.
+_Agregado: 2026-07-15_
+
+## Artifact (artefacto)
+Una página web (HTML o Markdown) que Claude publica con un link propio, para
+ver o compartir fuera del chat. Se puede actualizar re-publicando el mismo
+archivo — si es la misma conversación, el link no cambia.
+_Agregado: 2026-07-15_
+
+## Share of voice
+En marketing/redes: qué porcentaje de las menciones de un tema le
+corresponden a tu marca en comparación con tus competidores.
+_Agregado: 2026-07-15_
