@@ -14,6 +14,24 @@ Prototipo de producto: un sistema de feedback de clientes **por voz** en vez de 
 
 Next.js 15 · React 19
 
+## Modelo de datos (mock)
+
+El dashboard (`app/dashboard/page.jsx`) arma cada fila de feedback a partir de un array hardcodeado en el componente — no hay modelo de datos declarado en ningún otro lugar del repo. Estos son los campos que usa hoy:
+
+| Campo | Tipo | Notas |
+|---|---|---|
+| `id` | `number` | Identificador secuencial del mock (1 a 5). |
+| `nombre` | `string` | Nombre del cliente, o `"Anónimo"` en el ejemplo sin identificar. |
+| `empresa` | `string \| null` | Empresa del cliente. `null` cuando no se registró. |
+| `preview` | `string` | Fragmento de texto entre comillas — simula la transcripción del audio. |
+| `categoria` | `string` (enum) | Valores usados en el mock: `servicio`, `precio`, `producto`, `atención`. El gráfico de categorías agrega una quinta, `otro`, que no aparece en ningún registro de ejemplo. |
+| `duracion` | `string` | Duración del audio en formato `m:ss` (ej. `"1:24"`). |
+| `sentimiento` | `string` (enum) | `pos` \| `neu` \| `neg`. Define qué color de pill se usa (`.pill-pos` / `.pill-neu` / `.pill-neg` en `globals.css`). |
+| `label` | `string` | Versión legible de `sentimiento` para mostrar en la UI: `"Positivo"`, `"Neutro"`, `"Negativo"`. |
+| `tiempo` | `string` | Texto libre de tiempo relativo (ej. `"hace 5 min"`, `"ayer"`) — no es una fecha real. |
+
+Ningún campo tiene validación de tipos (no hay TypeScript ni schema): esto documenta la forma que asume el mock hoy, no un contrato garantizado por código.
+
 ## Próximos pasos
 
 - Grabación de audio real (MediaRecorder API del navegador)
